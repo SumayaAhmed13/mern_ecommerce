@@ -7,5 +7,6 @@ const DataSchema=mongoose.Schema({
     timestamps:true,versionKey:false
 })
 
-const WishModel=mongoose.model('wishes',DataSchema);
+const WishModel=mongoose.model('wishes',DataSchema)
+
 module.exports=WishModel

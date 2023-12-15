@@ -1,5 +1,5 @@
 
-const { BrandListService,CategoryListService,SliderListService,ListByBrandService, ListByCategoryService,ListBySimilarService,ListByRemarkService,ListByKeywordService,ReviewListService,DetailService}=require("../service/ProductServices")
+const { BrandListService,CategoryListService,SliderListService,ListByBrandService, ListByCategoryService,ListBySimilarService,ListByRemarkService,ListByKeywordService,ReviewListService,DetailService}=require("../services/ProductServices")
 
 const ProductBrandList=async(req,res)=>{
     let result=await BrandListService();
@@ -32,15 +32,28 @@ const ProductListByRemark=async(req,res)=>{
 
 }
 
-const ProductListBySimilar=async(req,res)=>{}
+const ProductListBySimilar=async(req,res)=>{
+
+    let result=await ListBySimilarService(req);
+    return res.status(200).json(result);
+}
+const ProductDetail=async(req,res)=>{
+    let result=await DetailService(req);
+    return res.status(200).json(result);
+
+}
+
+const ProductListByKeyword=async(req,res)=>{
+    let result=await ListByKeywordService(req);
+    return res.status(200).json(result);
+}
+
+const ProductReviewList=async(req,res)=>{
+    let result=await ReviewListService(req);
+    return res.status(200).json(result);
+}
 
 
-
-const ProductListByKeyword=async(req,res)=>{}
-
-const ProductReviewList=async(req,res)=>{}
-
-const ProductDetail=async(req,res)=>{}
 
 module.exports={
     ProductBrandList,
