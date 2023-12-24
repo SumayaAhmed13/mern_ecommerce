@@ -3,6 +3,7 @@ const router=express.Router();
 const ProductCtrl=require("../controller/ProductController");
 const UserCtrl=require('../controller/UserController');
 const WishCtrl=require("../controller/WishListController");
+const CartCtrl=require("../controller/CartListController");
 const AuthVerification=require("../middleware/AuthVerification")
 
 
@@ -34,5 +35,13 @@ router.get('/ReadProfile',AuthVerification,UserCtrl.ReadProfile);
 router.get('/WishList',AuthVerification,WishCtrl.WishList);
 router.post('/SaveWishList',AuthVerification,WishCtrl.SaveWishList);
 router.post('/RemoveWishList',AuthVerification,WishCtrl.RemoveWishList);
+
+// Cart List Api
+router.get('/CartList',AuthVerification,CartCtrl.CartList);
+router.post('/SaveCartList',AuthVerification,CartCtrl.SaveCartList);
+router.post('/UpdateCartList/:cartID',AuthVerification,CartCtrl.UpdateCartList);
+router.post('/RemoveCartList',AuthVerification,CartCtrl.RemoveCartList);
+
+
 
 module.exports=router;
