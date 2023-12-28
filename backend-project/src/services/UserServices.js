@@ -53,11 +53,7 @@ const VerifyOTPService=async(req)=>{
    catch(e){
     return {status:"Fail",data:e}.toString();
    }
-
-
-
-
-}
+  }
 const SaveProfileService=async(req)=>{
   try{
     let user_id=req.headers.user_id;

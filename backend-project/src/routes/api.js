@@ -4,9 +4,8 @@ const ProductCtrl=require("../controller/ProductController");
 const UserCtrl=require('../controller/UserController');
 const WishCtrl=require("../controller/WishListController");
 const CartCtrl=require("../controller/CartListController");
-const AuthVerification=require("../middleware/AuthVerification")
-
-
+const InvoiceCtrl=require("../controller/InvoiceController");
+const AuthVerification=require("../middleware/AuthVerification");
 
 //Product Api
 router.get('/ProductBrandList',ProductCtrl.ProductBrandList);
@@ -42,6 +41,13 @@ router.post('/SaveCartList',AuthVerification,CartCtrl.SaveCartList);
 router.post('/UpdateCartList/:cartID',AuthVerification,CartCtrl.UpdateCartList);
 router.post('/RemoveCartList',AuthVerification,CartCtrl.RemoveCartList);
 
-
+// Invoice & Payment Api
+router.get('/CreateInvoice',AuthVerification,InvoiceCtrl.CreateInvoice);
+router.get('/InvoiceList',AuthVerification,InvoiceCtrl.InvoiceList);
+router.get('/InvoiceProductList/:invoice_id',AuthVerification,InvoiceCtrl.InvoiceProductList);
+router.post('/PaymentSuccess/:trxID',InvoiceCtrl.PaymentSuccess);
+router.post('/PaymentCancel/:trxID',InvoiceCtrl.PaymentCancel);
+router.post('/PaymentFail/:trxID',InvoiceCtrl.PaymentFail);
+router.post('/PaymentIPN/:trxID',InvoiceCtrl.PaymentIPN);
 
 module.exports=router;
